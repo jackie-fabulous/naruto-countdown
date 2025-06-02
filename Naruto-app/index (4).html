@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍥 Naruto Countdown Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Bangers', cursive;
+      background: #f4a261;
+      color: #1b1b1b;
+      padding: 2em;
+      max-width: 650px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #264653;
+      font-size: 2.5em;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.5em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .toggle {
+      margin-top: 1em;
+    }
+    button {
+      margin-top: 1.5em;
+      width: 100%;
+      padding: 0.75em;
+      background: #2a9d8f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #21867a;
+    }
+    .output {
+      margin-top: 2em;
+      background: #ffffff;
+      color: #000;
+      padding: 1em;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    .quote {
+      margin-top: 2em;
+      font-size: 1.1em;
+      text-align: center;
+      color: #e63946;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍜 Naruto Countdown Calculator</h1>
+
+  <label for="tripDate">Trip Departure Date:</label>
+  <input type="date" id="tripDate" />
+
+  <label for="narutoEp">Current Naruto Episode (out of 220):</label>
+  <input type="number" id="narutoEp" min="0" max="220" value="0" />
+
+  <label for="shippudenEp">Current Shippuden Episode (out of 500):</label>
+  <input type="number" id="shippudenEp" min="0" max="500" value="0" />
+
+  <div class="toggle">
+    <input type="checkbox" id="skipFillers" />
+    <label for="skipFillers">Skip filler episodes</label>
+  </div>
+
+  <button onclick="calculateCountdown()">Calculate</button>
+
+  <div class="output" id="results"></div>
+
+  <div class="quote">
+    "Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki
+  </div>
+
+  <script>
+    const narutoCanon = 135;
+    const narutoTotal = 220;
+    const shippudenCanon = 300;
+    const shippudenTotal = 500;
+
+    const quotes = [
+      'Hard work is worthless for those that don’t believe in themselves. – Naruto Uzumaki',
+      'A lesson you learned from pain is not easily forgotten. – Jiraiya',
+      'When you give up, your dreams and everything else, they’re gone. – Naruto Uzumaki',
+      'Power is not will, it is the phenomenon of physically making things happen. – Madara Uchiha',
+      'It’s not the face that makes someone a monster; it’s the choices they make with their lives. – Naruto Uzumaki'
+    ];
+
+    function getRandomQuote() {
+      return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function calculateCountdown() {
+      const today = new Date();
+      const tripDate = new Date(document.getElementById('tripDate').value);
+      const narutoEp = parseInt(document.getElementById('narutoEp').value) || 0;
+      const shippudenEp = parseInt(document.getElementById('shippudenEp').value) || 0;
+      const skipFillers = document.getElementById('skipFillers').checked;
+
+      if (tripDate <= today) {
+        document.getElementById('results').innerText = 'Please select a future trip date.';
+        document.querySelector('.quote').innerText = '';
+        return;
+      }
+
+      const daysLeft = Math.ceil((tripDate - today) / (1000 * 60 * 60 * 24));
+      let narutoRemaining = 0;
+      let shippudenRemaining = 0;
+
+      if (skipFillers) {
+        narutoRemaining = Math.max(narutoCanon - narutoEp, 0);
+        shippudenRemaining = Math.max(shippudenCanon - shippudenEp, 0);
+      } else {
+        narutoRemaining = Math.max(narutoTotal - narutoEp, 0);
+        shippudenRemaining = Math.max(shippudenTotal - shippudenEp, 0);
+      }
+
+      const totalRemaining = narutoRemaining + shippudenRemaining;
+      const epsPerDay = totalRemaining / daysLeft;
+      let message = `You have ${totalRemaining} episodes left between Naruto and Shippuden.`;
+      message += `
+
+Watch around ${epsPerDay.toFixed(2)} episodes per day to finish before your trip.`;
+      document.getElementById('results').innerText = message;
+      document.querySelector('.quote').innerText = getRandomQuote();
+    }
+  </script>
+</body>
+</html>
