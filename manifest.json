@@ -1,0 +1,13 @@
+{
+  "name": "Naruto Countdown Calculator",
+  "short_name": "NarutoCalc",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4a261",
+  "theme_color": "#264653",
+  "icons": [{
+    "src": "https://i.imgur.com/t4ZzQke.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }]
+}
