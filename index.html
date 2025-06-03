@@ -75,7 +75,9 @@
     }
     .banner {
       width: 100%;
-      max-width: 700px;
+      max-width: 800px;
+      border-radius: 8px;
+      margin-top: 1em;
     }
     .sidebar {
       display: flex;
@@ -117,7 +119,7 @@
     <h1>🍜 Naruto Countdown Calculator</h1>
   </header>
 
-  <img src="https://i.imgur.com/7YmuTBe.jpeg" alt="Naruto Themepark" class="banner" />
+  <img src="https://res.klook.com/image/upload/c_fill,w_1265,h_712/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/fxwuye3f9wd2et246sw6.webp" alt="Naruto Themepark" class="banner" />
 
   <div class="container">
     <label for="tripDate">Trip Departure Date:</label>
@@ -137,6 +139,21 @@
     <button onclick="calculateCountdown()">Calculate</button>
     <div class="output" id="results"></div>
     <div class="quote" id="quoteText">"Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki</div>
+
+    <div class="klook-widget" style="margin-top: 2em; text-align:center;">
+      <ins class="klk-aff-widget"
+           data-wid="91390"
+           data-adid="1059891"
+           data-actids="49769"
+           data-prod="single_act"
+           data-price="false"
+           data-lang=""
+           data-width="300"
+           data-height="250"
+           data-currency="">
+        <a href="https://www.klook.com/">Klook.com</a>
+      </ins>
+    </div>
   </div>
 
   <div class="sidebar">
@@ -186,8 +203,7 @@
       const epsPerDay = totalRemaining / daysLeft;
 
       document.getElementById('results').innerText =
-        `You have ${totalRemaining} episodes left.
-Watch around ${epsPerDay.toFixed(2)} episodes per day.`;
+        `You have ${totalRemaining} episodes left.\nWatch around ${epsPerDay.toFixed(2)} episodes per day.`;
       document.getElementById('quoteText').innerText = getRandomQuote();
     }
 
@@ -196,6 +212,17 @@ Watch around ${epsPerDay.toFixed(2)} episodes per day.`;
         navigator.serviceWorker.register('service-worker.js');
       });
     }
+  </script>
+
+  <script type="text/javascript">
+    (function (d, sc, u) {
+      var s = d.createElement(sc),
+          p = d.getElementsByTagName(sc)[0];
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = u;
+      p.parentNode.insertBefore(s, p);
+    })(document, "script", "https://affiliate.klook.com/widget/fetch-iframe-init.js");
   </script>
 </body>
 </html>
