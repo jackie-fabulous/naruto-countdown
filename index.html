@@ -10,11 +10,36 @@
       font-family: 'Bangers', cursive;
       background: #f4a261;
       color: #1b1b1b;
-      padding: 2em;
-      max-width: 650px;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 1em;
+      max-width: 1200px;
       margin: auto;
+    }
+    .main-content {
+      background: #f4a261;
+      padding: 2em;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      flex: 1;
+      max-width: 650px;
+    }
+    .sidebar {
+      width: 160px;
+    }
+    .amazon-box {
+      background: #fff3cd;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
     }
     h1 {
       text-align: center;
@@ -65,47 +90,67 @@
       text-align: center;
       color: #e63946;
     }
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        order: 2;
+        width: 100%;
+        max-width: 300px;
+        margin: 1em auto;
+      }
+      .main-content {
+        order: 1;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>🍜 Naruto Countdown Calculator</h1>
+  <div class="container">
+    <div class="sidebar">
+      <ins class="klk-aff-widget" data-wid="91390" data-adid="1059891" data-actids="49769,81022,74574" data-prod="mul_act" data-price="false" data-lang="" data-width="160" data-height="600" data-currency="">
+        <a href="//www.klook.com/">Klook.com</a>
+      </ins>
+    </div>
 
-  <label for="tripDate">Trip Departure Date:</label>
-  <input type="date" id="tripDate" />
+    <div class="main-content">
+      <h1>🍜 Naruto Countdown Calculator</h1>
 
-  <label for="narutoEp">Current Naruto Episode (out of 220):</label>
-  <input type="number" id="narutoEp" min="0" max="220" value="0" />
+      <label for="tripDate">Trip Departure Date:</label>
+      <input type="date" id="tripDate" />
 
-  <label for="shippudenEp">Current Shippuden Episode (out of 500):</label>
-  <input type="number" id="shippudenEp" min="0" max="500" value="0" />
+      <label for="narutoEp">Current Naruto Episode (out of 220):</label>
+      <input type="number" id="narutoEp" min="0" max="220" value="0" />
 
-  <div class="toggle">
-    <input type="checkbox" id="skipFillers" />
-    <label for="skipFillers">Skip filler episodes</label>
-  </div>
+      <label for="shippudenEp">Current Shippuden Episode (out of 500):</label>
+      <input type="number" id="shippudenEp" min="0" max="500" value="0" />
 
-  <button onclick="calculateCountdown()">Calculate</button>
+      <div class="toggle">
+        <input type="checkbox" id="skipFillers" />
+        <label for="skipFillers">Skip filler episodes</label>
+      </div>
 
-  <div class="output" id="results"></div>
+      <button onclick="calculateCountdown()">Calculate</button>
 
-  <div class="quote">
-    "Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki
-  </div>
+      <div class="output" id="results"></div>
 
-  <!-- Amazon Sidebar (Right) -->
-  <div style="position: absolute; top: 120px; right: 20px; width: 240px; background: #fff3cd; padding: 10px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2); font-family: Arial, sans-serif;">
-    <h3 style="font-size: 1.1em; color: #d35400;">Naruto Fan Picks</h3>
-    <a href="https://amzn.to/3T3RrVJ" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b; font-weight:bold;">🍥 Naruto Ramen Bowl</a>
-    <a href="https://amzn.to/3T60ntO" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🧡 Naruto Shippuden Kakashi Story Limited Color T-Shirt</a>
-    <a href="https://amzn.to/4566UvW" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🔥 Naruto Shippuden Akatsuki Silhouette Anime Pullover Hoodie</a>
-    <a href="https://amzn.to/43WnwoF" target="_blank" style="display:block; text-decoration:none; color:#1b1b1b;">🍃 Funko POP! Animation Naruto Uzumaki Six Path Sage</a>
-  </div>
+      <div class="quote">
+        "Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki
+      </div>
+    </div>
 
-  <!-- Klook Sidebar (Left) -->
-  <div style="position: absolute; top: 120px; left: 20px; width: 160px;">
-    <ins class="klk-aff-widget" data-wid="91390" data-adid="1059891" data-actids="49769,81022,74574" data-prod="mul_act" data-price="false" data-lang="" data-width="160" data-height="600" data-currency="">
-      <a href="//www.klook.com/">Klook.com</a>
-    </ins>
+    <div class="sidebar">
+      <div class="amazon-box">
+        <h3 style="font-size: 1.1em; color: #d35400;">Naruto Fan Picks</h3>
+        <a href="https://amzn.to/3T3RrVJ" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b; font-weight:bold;">🍥 Naruto Ramen Bowl</a>
+        <a href="https://amzn.to/3T60ntO" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🧡 Naruto Shippuden Kakashi Story Limited Color T-Shirt</a>
+        <a href="https://amzn.to/4566UvW" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🔥 Naruto Shippuden Akatsuki Silhouette Anime Pullover Hoodie</a>
+        <a href="https://amzn.to/43WnwoF" target="_blank" style="display:block; text-decoration:none; color:#1b1b1b;">🍃 Funko POP! Animation Naruto Uzumaki Six Path Sage</a>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -160,7 +205,6 @@
     }
   </script>
 
-  <!-- Klook Widget Script -->
   <script type="text/javascript">
     (function (d, sc, u) {
       var s = d.createElement(sc),
