@@ -68,24 +68,6 @@
   </style>
 </head>
 <body>
-   <!-- LEFT SIDEBAR: Klook -->
-  <div style="position: absolute; top: 120px; left: 20px; width: 160px;">
-  <ins class="klk-aff-widget" data-wid="91390" data-adid="1059891" data-actids="49769,81022,74574" data-prod="mul_act" data-price="false" data-lang="" data-width="160" data-height="600" data-currency=""><a href="//www.klook.com/">Klook.com</a></ins>
-<script type="text/javascript">
-  (function (d, sc, u) {
-    var s = d.createElement(sc),
-      p = d.getElementsByTagName(sc)[0];
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = u;
-    p.parentNode.insertBefore(s, p);
-  })(
-    document,
-    "script",
-    "https://affiliate.klook.com/widget/fetch-iframe-init.js"
-  );
-</script>
-  </div>
   <h1>🍜 Naruto Countdown Calculator</h1>
 
   <label for="tripDate">Trip Departure Date:</label>
@@ -108,6 +90,22 @@
 
   <div class="quote">
     "Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki
+  </div>
+
+  <!-- Amazon Sidebar (Right) -->
+  <div style="position: absolute; top: 120px; right: 20px; width: 240px; background: #fff3cd; padding: 10px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2); font-family: Arial, sans-serif;">
+    <h3 style="font-size: 1.1em; color: #d35400;">Naruto Fan Picks</h3>
+    <a href="https://amzn.to/3T3RrVJ" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b; font-weight:bold;">🍥 Naruto Ramen Bowl</a>
+    <a href="https://amzn.to/3T60ntO" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🧡 Naruto Shippuden Kakashi Story Limited Color T-Shirt</a>
+    <a href="https://amzn.to/4566UvW" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">🔥 Naruto Shippuden Akatsuki Silhouette Anime Pullover Hoodie</a>
+    <a href="https://amzn.to/43WnwoF" target="_blank" style="display:block; text-decoration:none; color:#1b1b1b;">🍃 Funko POP! Animation Naruto Uzumaki Six Path Sage</a>
+  </div>
+
+  <!-- Klook Sidebar (Left) -->
+  <div style="position: absolute; top: 120px; left: 20px; width: 160px;">
+    <ins class="klk-aff-widget" data-wid="91390" data-adid="1059891" data-actids="49769,81022,74574" data-prod="mul_act" data-price="false" data-lang="" data-width="160" data-height="600" data-currency="">
+      <a href="//www.klook.com/">Klook.com</a>
+    </ins>
   </div>
 
   <script>
@@ -156,28 +154,22 @@
       const totalRemaining = narutoRemaining + shippudenRemaining;
       const epsPerDay = totalRemaining / daysLeft;
       let message = `You have ${totalRemaining} episodes left between Naruto and Shippuden.`;
-      message += `
-
-Watch around ${epsPerDay.toFixed(2)} episodes per day to finish before your trip.`;
+      message += `\n\nWatch around ${epsPerDay.toFixed(2)} episodes per day to finish before your trip.`;
       document.getElementById('results').innerText = message;
       document.querySelector('.quote').innerText = getRandomQuote();
     }
   </script>
+
+  <!-- Klook Widget Script -->
+  <script type="text/javascript">
+    (function (d, sc, u) {
+      var s = d.createElement(sc),
+          p = d.getElementsByTagName(sc)[0];
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = u;
+      p.parentNode.insertBefore(s, p);
+    })(document, "script", "https://affiliate.klook.com/widget/fetch-iframe-init.js");
+  </script>
 </body>
 </html>
-<div style="position: absolute; top: 120px; right: 20px; width: 240px; background: #fff3cd; padding: 10px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2); font-family: Arial, sans-serif;">
-  <h3 style="font-size: 1.1em; color: #d35400;">Naruto Fan Picks</h3>
-  <a href="https://amzn.to/3T3RrVJ" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b; font-weight:bold;">
-    🍥 Naruto Ramen Bowl
-  </a>
-  <a href="https://amzn.to/3T60ntO" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">
-    🧡 Naruto Shippuden Kakashi Story Limited Color T-Shirt
-  </a>
-  <a href="https://amzn.to/4566UvW" target="_blank" style="display:block; margin-bottom:10px; text-decoration:none; color:#1b1b1b;">
-    🔥 Naruto Shippuden Akatsuki Silhouette Anime Pullover Hoodie
-  </a>
-  <a href="https://amzn.to/43WnwoF" target="_blank" style="display:block; text-decoration:none; color:#1b1b1b;">
-   🍃  Funko POP! Animation Naruto Uzumaki Six Path Sage
-  </a>
-</div>
-
