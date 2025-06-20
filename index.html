@@ -112,6 +112,17 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    #installBtn {
+      display: none;
+      margin: 2em auto;
+      padding: 0.75em 1.5em;
+      background: #e76f51;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
     @media (max-width: 700px) {
       .container, .sidebar {
         width: 90%;
@@ -171,6 +182,9 @@
 
   <button class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
 
+  <!-- 🔁 NEW INSTALL BUTTON -->
+  <button id="installBtn">🌀 Install Naruto Countdown App</button>
+
   <script>
     const narutoCanon = 135;
     const narutoTotal = 220;
@@ -218,6 +232,24 @@
         navigator.serviceWorker.register('service-worker.js');
       });
     }
+
+    // 🔁 Manual Install Prompt Handler
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          deferredPrompt = null;
+          document.getElementById('installBtn').style.display = 'none';
+        });
+      }
+    });
   </script>
 
   <script type="text/javascript">
